@@ -1,68 +1,153 @@
-﻿// See https://aka.ms/new-console-template for more information
-//Console.WriteLine("Hello, World!");
-// print("Hello, World!"
+﻿// Python => nombre = "test"
 
-/*
-nombre = "Jhon"
-apellido = "Snow"
-edad = 10
-*/
+// Lenguaje Fuertemente Tipado
 
-var Lista = new List<Persona>();
+// Tipo Variable - Nombre = ValorPorDefecto
 
-while (true)
+string Nombre = "Test";
+int Edad = 10;
+bool VerdaderoFalso = false;
+float PI = 1.1416f;
+char caracter = 'a';
+
+List<string> Listado = new List<string>();
+
+Listado.Add("Chile");
+Listado.Add("Arg");
+
+var apellido = "HOLA";
+var flag = true;
+
+// Control de Flujo
+
+if (apellido.Contains("OL") || apellido.StartsWith("S"))
 {
-    string? nombre;
-    string? apellido;
-    int edad;
+    Console.WriteLine("Verdadero");
+}
+else
+{
+    Console.WriteLine("Falso");
+}
 
-    Console.Write("Ingresa tu Nombre: ");
-    nombre = Console.ReadLine();
-    Console.Write("Ingresa tu Apellido: ");
-    apellido = Console.ReadLine();
-    Console.Write("Ingresa tu Edad: ");
-    edad = Convert.ToInt32(Console.ReadLine());
+while (1 > 3)
+{
+    Console.WriteLine("ASD");
+    break;
+}
+
+do
+{
+    Console.WriteLine("ASD");
+    break;
+} while (1 > 3);
+
+string mes = "123";
+switch (mes)
+{
+    case "Enero":
+        Console.WriteLine("Vacaciones");
+        break;
+
+    case "Febrero":
+        Console.WriteLine("Vacaciones");
+        break;
+
+    default:
+        Console.WriteLine("Caso por Defecto");
+        break;
+}
 
 
-    // P = Persona() => Python
-    var P = new Persona()
+//Ciclos
+
+for (int i = 0; i < 10; i++)
+{
+    Console.Write($"{i}");
+}
+
+foreach (var item in Listado)
+{
+    Console.WriteLine(item);
+}
+
+
+var AlumnoSebastian = new Alumno("1-1", "Seba", "Imas");
+var AlumnoPedro = new Alumno("1-1");
+var AlumnoGonzalo = new Alumno("1-1", "Gonzalo", 23);
+
+var contador = 0;
+
+
+contador = 1;
+
+Console.WriteLine(AlumnoSebastian.getInfo());
+Console.WriteLine(AlumnoPedro.getInfo());
+
+
+class Persona
+{
+    public string Rut { get; set; }
+    public string Nombre { get; set; }
+    public string Apellido { get; set; }
+
+    public Persona(string rut, string nombre, string apellido)
     {
-        Nombre = nombre,
-        Apellido = apellido,
-        Edad = edad
-    };
-
-
-    Lista.Add(P);
-
-    Console.Clear();
-    Console.WriteLine("Listado de Personas:");
-    foreach (var p in Lista)
+        Rut = rut;
+        Nombre = nombre;
+        Apellido = apellido;
+    }
+    public Persona(string rut, string nombre, int edad)
     {
-        Console.WriteLine(p.ToString());
+        Rut = rut;
+        Nombre = nombre;
+
+    }
+    public Persona(string rut)
+    {
+        Rut = rut;
     }
 
-    Console.ReadLine();
+    public string getInfo()
+    {
+        return $"Rut: {Rut} Nombres: {Nombre} Apellidos: {Apellido}";
+    }
+
+}
+
+class Alumno : Persona
+{
+    public Alumno(string rut, string nombre, string apellido) : base(rut, nombre, apellido)
+    {
+    }
+    public Alumno(string rut) : base(rut)
+    {
+    }
+
+    public Alumno(string rut, string nombre, int edad) : base(rut, nombre, edad)
+    {
+    }
+
+    public int CodigoMatricula { get; set; }
+}
+
+class Docente : Persona
+{
+    public Docente(string rut, string nombre, string apellido) : base(rut, nombre, apellido)
+    {
+    }
+
+    public int NContrato { get; set; }
+}
+
+class Administrativo : Persona
+{
+    public Administrativo(string rut, string nombre, string apellido) : base(rut, nombre, apellido)
+    {
+    }
 }
 
 
 
 
-//Console.WriteLine("---Resumen---");
-//Console.WriteLine($"Nombre Completo: {nombre} {apellido}, Edad: {edad}");
-//Console.WriteLine("Nombre Completo" + nombre + " " + apellido + ", Edad:" + edad);
-Console.ReadLine();
 
 
-public class Persona
-{
-    public int Edad { get; set; }
-    public string? Apellido { get; set; }
-    public string? Nombre { get; set; }
-
-    public override string ToString()
-    {
-        return $"Nombre Completo: {Nombre} {Apellido}, " +
-            $"Edad: {Edad}";
-    }
-}
