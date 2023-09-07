@@ -52,4 +52,9 @@ namespace WebApi.Model
     }
 
 
+    /*
+     Crear las tablas Cargas Familiares y Contactos de Emergencia y enlazarlas a la tabla Trabajador
+     */
+
+
 }
