@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Model;
@@ -10,6 +11,8 @@ namespace WebApi.Controllers
     //https://localhost/api/v3/departamento/
 
     [ApiController]
+    [Authorize(Roles = "Trabajador")] // 1 Rol Autorizado
+    [Authorize(Roles = "Trabajador, Ayudante")]   // 2 Roles Autorizados
     public class DepartamentoController : ControllerBase
     {
 
@@ -34,6 +37,7 @@ namespace WebApi.Controllers
 
         [HttpPost] // Escribir en la Base de Datos
         [Route("addDpto")] // Agregar Dpto
+
         public async Task<IActionResult> addDpto(Departamento dpto)
         {
             // INSERT INTO TblDepartamentos (Nombre, Descripcion) VALUES ('TI', 'Tecnologias de la Informacion')
