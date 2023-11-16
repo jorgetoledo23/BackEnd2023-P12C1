@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var edad = 20;
+    var list = new List<string>(){
+        "Chile",
+        "Argentina",
+        "Peru"
+    };
+}
+
+<div class="">
+    @if(edad > 18){
+        <p>Buena! Eres mayor!</p>
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+        <ul>
+        @foreach (var p in list)
+        { 
+            <li>@p</li>  
+        }
+        </ul>
+    }else{
+        <p>Lamentablemente no puedes ver el contenido</p>
+    }
+</div>
+
