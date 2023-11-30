@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApp.Models;
 
 namespace WebApp.Controllers
 {
+    [Authorize(Roles = "SuperAdministrador, Administrador, Asistente, Vendedor") ]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

@@ -17,6 +17,7 @@ namespace WebApp.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> LoginIn()
         {
             return View();
@@ -68,8 +69,13 @@ namespace WebApp.Controllers
                 return View();
             }
 
-            return View();
+        }
 
+        [HttpGet]
+        public async Task<RedirectToActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("LoginIn", "Auth");
         }
 
 
